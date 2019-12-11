@@ -1,0 +1,217 @@
+%\documentclass[TesisTotal.tex]{subfiles}
+%\begin{document}
+\chapter{Tsunamis en Guatemala}
+
+\section{Tsunamis}
+Un tsunami es, en términos generales, una serie de olas generadas a partir de un movimiento abrupto de gran magnitud en el fondo del mar, el cual se propaga verticalmente hasta la superficie\cite{tsunamiGlossary}. En la mayoría de los casos, este movimiento es ocasionado por un sismo de poca profundidad en una placa oceánica, pero también puede ser causado por otras fuentes, como distintos tipos de sismicidad (incluyendo sismos en placas continentales), actividad volcánica, un deslizamiento en el relieve oceánico o el impacto de un meteorito en el océano\cite{posterGlobal, posterCA, OLoughlin_etal2013}.
+La amplitud de estas olas, al llegar a las costas, puede variar de entre algunos centímetros hasta varios metros.
+Dependiendo de la magnitud del evento, estas olas pueden traer consigo varios escombros; tales como embarcaciones, grandes volúmenes de arena y objetos arrastrados por el agua en su trayectoria\cite{tsunamiGlossary}.
+
+Estas olas pueden recorrer grandes distancias, pudiendo llegar a recorrer mares completos\cite{tsunamiGlossary}. 
+El tiempo de arribo de dichas olas a las costas puede variar entre algunos minutos y unas cu\'antas horas. En Guatemala, aunque el dato no está concensuado, se estima que este tiempo de arribo, en los peores escenarios, puede ser del orden de 15 minutos.
+Con este tiempo es factible realizar alertas tempranas para la evacuación de comunidades.
+
+En Guatemala, estas alertas son recibidas del Centro de Alerta de Tsunamis del Pacífico (PTWC, por sus siglas en inglés) y del Centro de Asesoramiento de Tsunami para América Central (CATAC), y posteriormente transmitidas a la población.
+La autoevacuación es siempre recomendada\cite{PNR}: al sentir un sismo de gran intensidad, correr hacia puntos seguros previamente identificados. De no ser posible evacuar hacia puntos con suficiente elevación, se recomienda buscar edificaciones altas con cimientos fuertes, o incluso trepar un 
+árbol con tronco fuerte\cite{lessonsIndonesia,lessonsCHJ}.
+
+
+La simulación de tsunamis se hace en tres etapas: generación, propagación e inundación.
+
+\subsection{Propagación: ecuaciones de agua poco profunda}
+
+Consideramos un cuerpo finito de agua con volumen $\vol$, densidad $\rho$ y velocidad $\v{v}$ dada por
+\begin{equation}
+  \label{eq:v}
+  \vec{v} = u \hat{i} + v \hat{j} + w \hat{k} = (u,v,w).
+\end{equation}
+
+El cuerpo se encuentra aislado, de manera que su masa ($m$) se conserva, siguiendo la ecuación:
+
+\begin{equation}
+  \frac{ \partial \rho}{\partial t} + \nabla \cdot (\rho \vec{v}) = 0
+  \label{eq:continuidad}
+\end{equation}
+
+\begin{proof} \todo{A esto le falta mucho para ser una demostración formal. Quisiera hacer una, pero me puede tomar mucho tiempo, aunque considero que vale la pena. Me hace sentr más seguro de lo que digo, me ayuda a simplificar la redacción y me permite hacer cambios sin afectar la continuidad del tema.}
+Consideremos un flujo de masa en un volumen infinitesimal $dV$ dentro de $\vol$, dado por $\frac{dm}{dt} = \frac{\partial m}{\partial V} \frac{dV}{dt}$.
+Para un volumen infinitesimal, podemos considerar que el fluído se mueve en una sola dirección $\hat{n}$, de manera que el volumen de fluido desplazado en el tiempo $dt$ es $A d\vec{s} \cdot \hat{n}$, y $\frac{dm}{dt} = \int_{\vol} \frac{\partial m}{\partial V} \frac{d\vec{s}}{dt} \cdot \hat{n} {dA} = \int_{\vol} \rho \vec{v} \cdot \hat{n} dA $, donde $\rho$ representa la densidad del fluído, $A$ el área transversal de $dV$, y $\vec{v}$ la velocidad del fluído en $dV$.\\
+Esta ecuación es similar a la del flujo total de una cantidad $q$ dada por una densidad de flujo $\vec{j}$: $\frac{dq}{dt} = \int_{d\vol} \vec{j} \cdot \hat{n} dA$. En este caso, $q = m$ y $\vec{j} = \rho \vec{v}$. \todo{En realidad hay un signo mal en algún lugar de aquí, ¿$\vec{j}$ va hacia adentro o hacia afuera de $dV$? Creo que en la ecuación de flujo va hacia adentro, y en la de continuidad va hacia afuera.}\\
+Expresando $\frac{dm}{dt}$ como $\frac{d}{dt} \int_\vol \rho dV$ y convirtiendo la integral $\int_{d\vol} \vec{j} \cdot \hat{n} dA$ a una integral volumétrica por medio del teorema de Gauss, llegamos a la conocida ecuación de continuidad: \footnote{Aquí hay un paso oculto, puesto que $\frac{d\vol}{dt} \neq 0$, en cuyo caso (ver teorema de Reynolds):  $\frac{d}{dt} \int_\vol \rho dV =\int_\vol \left( \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \vec{v}) \right) dV$, así que hay que demostrar que $\nabla \cdot (\rho \vec{v}) = 0$ para llegar a la ecuación citada. Esto se demuestra más adelante. \todo{En realidad no tiene sentido tener que demostrar eso antes, porque ese es precisamente el resultado que se quiere obtener de esa ecuación. Podría escribir la ecuación como $\frac{ \partial \rho}{\partial t} + 2 \nabla \cdot (\rho \vec{v}) = 0$, pero no encuentro eso en ninguna referencia, así que me da miedo ponerlo. En todo caso, si la escribiera así, tendría que cambiar la expresión ``...la conocida ecuación...''.}}
+\[
+  \frac{ \partial \rho}{\partial t} + \nabla \cdot (\rho \vec{v}) = 0
+\]
+\end{proof}
+
+El cuerpo está sujeto a una fuerza gravitacional $\int_{\vol} \rho \vec{g} dV$, y su propia presión como fuerza de contacto: $\int_{d\vol} -\vec{p} \cdot \hat{n} dA$; de manera que, siguiendo la ley de conservación de momentum lineal, obtenemos las ecuaciones clásicas de Navier-Stokes: \todo{¿Quitar el paréntesis? Tendría que cambiar $\div{v}$ por la expresión completa}
+
+\begin{equation}
+  \label{eq:Navier-Stokes}
+  \pddt{} (\rho \v{v}) +(\v{v}\cdot\nabla)(\rho\v{v}) = -\nabla p + \rho \v{g} + \rho \v{v} (\div{\v{v}}) - 2 \v{\Omega} \times \v{v}
+\end{equation}
+
+Para el caso del mar, puede considerarse que sigue un flujo incompresible; es decir, para un volumen infinitésimal que se mueve con el fluído, se cumple que $\pddt{\rho} = \nabla \rho =  0$.\todo{buscar referencia}
+% Durante la propagación en mar profundo, consideraremos únicamente desplazamientos verticales pequeños \todo{Este no es el argumento real. No recuerdo cuál es y ya tengo mucho sueño :(}, por lo que podemos
+%En el caso de un fluído incompresible ($\frac{\partial \rho}{\partial p}=0$), podemos asumir $\pddt{\rho} = \nabla \rho =  0$, de modo que, según la ecuación \eqref{eq:continuidad},
+
+Considerando esto en la ecuación de continuidad \eqref{eq:continuidad}, legamos a:
+
+\begin{equation}
+  \label{eq:divV}
+  \div{v}=0  
+\end{equation}
+
+
+Así, según \eqref{eq:Navier-Stokes}:
+\begin{equation}
+  \label{eq:Navier-Stokes2}
+  \pddt{\v{v}} + (\v{v}\cdot\nabla)\v{v} = \frac{-\nabla p}{\rho} + \v{g} - \frac{2 \v{\Omega} \times \v{v}}{\rho}
+\end{equation}
+
+\subsubsection{Condiciones de frontera}
+\label{sec:condiciones-frontera}
+
+Consideremos ahora el caso de un desplazamiento vertical en el fondo del mar dado por $\bup$ con respecto a su profundidad en estado estable $\down$, el cual genera un desplazamiento vertical en la superficie dado por $\sup$. Ver figura \ref{fig:upLift}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.8\linewidth]{upLift}
+  \caption{Desplazamiento vertical $\bup$ en el fondo del mar, generando un desplazamiento $\sup$ de la superficie con respecto a su altura en estado estable $\down$. Fuente: \cite{Levin2016}}
+  \label{fig:upLift}
+\end{figure}
+
+La superficie del mar será siempre una función continua de $(x,y,t)$: $z_{\surface} = \sup(x,y,t)$
+, de manera que el flujo superficial cumple la condición
+\begin{equation}
+  \label{eq:freeSurfaceFlow}
+  \ddt{}z_{\surface} = w \rvert{z=\sup} = \pddt{\sup} + u \pddx{\sup} + v \pddy{\sup}.
+\end{equation}
+
+Además, por continuidad, la presión en la superfice debe ser igual a la presión atmosférica:
+
+\begin{equation}
+  \label{eq:p_atm-continuity}
+  p \rvert{z=\sup} = p_{\atm}
+\end{equation}
+
+Mientras, en el fondo del mar, el único cambio en $z$ estará dado por $\bup$: $z_{\bottom} = \zbot = -\down(x,y) + \bup(x,y,t)$, de manera que el flujo normal cumple la condición
+\begin{equation}
+  \label{eq:normalFlow}
+    \ddt{}\zbot = w \rvert{z=\zbot} = -u \pddx{\down} - v \pddy{\down} + \ddt{\bup}
+\end{equation}
+
+Para un proceso instantáneo, podemos considerar únicamente deformaciones residuales. En este caso:
+
+\begin{equation}
+  \label{eq:w-bottom-instantaneous}
+  w \rvert{z=\zbot} = -u \pddx{\down} - v \pddy{\down}
+\end{equation}
+
+
+Y, dado que en $\zbot$ no puede haber movimiento vertical además de $\bup$, se debe cumplir la condicón:
+
+\begin{equation}
+  \label{eq:no-normal-flow}
+  \v{v} \cdot \hat{n} = \v{v}_\bup \cdot \hat{n}
+\end{equation}
+
+Donde $\v{v}_\bup = \ddt{\zbot}$. %representa la velocidad con que se levanta el fondo del mar luego del movimiento del suelo.
+
+\subsubsection{Ecuación de continuidad promedio}
+\label{sec:depth-average-continuity-equation}
+
+Integrando la ecuación \eqref{eq:divV} verticalmente:
+\begin{eqnarray}
+  \label{eq:2}
+  \intver \div{v} \, dz & = & \intver \left( \pddx{u} + \pddy{v} \right) dz + w\rvert{z=\sup} - w \rvert{z=\zbot} \\
+                        & = & \pddx{} \intver u \, dz + \pddy{} \intver v \, dz - 
+                              \left(
+                              u\rvert{z=\sup} \pddx{\sup} + u \rvert{z=\zbot} \pddx{\zbot}
+                              \right)\\ & &
+  -                              \left( 
+  - v \rvert{z=\sup} \pddy{\sup} + v \rvert{z=\zbot} \pddy{\zbot}
+  \right)
+                                            + w \rvert{z=\sup} - w_{\bottom}
+%                              \right)
+\end{eqnarray}
+
+Identificamos los primeros términos entre paréntesis de la ecuaci\'on anterior como $w \rvert{z=\zbot}$, y los segundos como $w\rvert{z=\sup} + \pddt{\zbot}$; de modo que, definiendo $\hat{u} = \frac{1}{\zbot} \intver u \, dz$ y $\hat{v} = \frac{1}{\zbot} \intver v \, dz$, llegamos a la ecuación de continuidad promedio:
+
+\begin{equation}
+  \label{eq:depth-average}
+  \pddt{\zbot} + \pddx{\zbot \bar{u}} + \pddy{\zbot \bar{v}} = 0
+\end{equation}
+
+\subsubsection{Long wave approximation}
+\label{sec:longwaveapprox}
+
+Expandiendo la ecuación \eqref{eq:divV}:
+\begin{equation}
+  \label{eq:divergence}
+  \pddx{u} + \pddy{v} + \pddy{z} = 0  
+\end{equation}
+
+Si asumimos $u \sim v$, en media longitud de onda $0.5 \lambda $, correspondiente a un desplazamiento vertical $\down$, notamos que
+
+\begin{equation}
+  % \label{eq:longWaveAprox}
+\label{eq:1}
+  \frac{\D u}{0.5 \lambda} + \frac{\D u}{0.5 \lambda} + \frac{\D w}{\down} = 0 \then |\D w| \sim \frac{\down}{\lambda} | \D u |
+\end{equation}
+
+De modo que, si $H << \lambda$, $\D w$ puede ser descartado al estar acompañado por trémino del orden de $\D u$.
+Esta aproximaci\'on es conocida como aproximación de ondas largas (\textit{long wave approximation}).
+
+Además, consideremos la fuerza de Coriolis en la ecuación \eqref{eq:Navier-Stokes2};
+en el caso de la rotación de la Tierra, $\Omega = (0, \omega co(\phi), \omega sin(\phi)$, donde $\omega$ represena la rapidez de rotación y $\phi$ la latitud del punto en consideraci\'on,
+%Usando \eqref{eq:v}, llegamos a:
+
+\begin{eqnarray}
+  \label{eq:coriolis-approx-0}
+  2 \v{\Omega} \times \v{v} = & 2 \omega (v \sin \phi - w \cos \phi, -u \sin \phi, u \cos \phi) \\
+  \approx & 2 \omega ( v \sin \phi, -u \sin \phi, 0 ) % \\  = & 2 \omega (fv,-fu)
+\end{eqnarray}
+
+%Donde definimos $f = 2 \omega \sin \phi$,
+El término $ \omega w \cos \phi$ es despreciado en comparación con $ \omega v \sin \phi$, y el término de aceleración vertical ($ \omega u \cos \phi$) es despreciado en comparación con $\v{g}$.
+Definiendo $f = 2 \omega \sin \phi$, reescribimos la fuerza de Coriolis como:
+
+\begin{equation}
+  \label{eq:CoriolisApprox}
+  2 \v{\Omega} \times \v{v} \approx 2 \omega (fv, -fu)
+\end{equation}
+
+Veamos ahora la componente vertical de \eqref{eq:Navier-Stokes2}.
+El término $(\v{v} \cdot \nabla) \v{v}$ puede ser descartado en comparaci\'on con \v{g}, al igual que el térmno de la ecuación de Coriolis. Así, para la componente vertical del movimiento del agua, se cumple la ecuación
+
+\begin{equation}
+  \label{eq:N-S_z_pre}
+  \pddz{p} = -\rho g
+\end{equation}
+
+De modo que, integrando de $z$ a $\sup$, considerando la ecuación \eqref{eq:p_atm-continuity}, la presión está dada por
+
+\begin{equation}
+  \label{eq:pressure}
+  p(x,y,z,t) = p_{atm}+ \rho g (\sup - z)
+\end{equation}
+
+Y $\pddx{p} = \pddx{p_{atm}} + \rho g \pddx{\sup}$, y similarmente para $y$.
+
+Con esto, las componentes horizontales de la ecuación \eqref{eq:Navier-Stokes2} se convierten en:
+
+\begin{eqnarray}
+  \label{eq:N-S_x}
+  \pddt{u} + u \pddx{u} + v \pddy{u} & = & -g \pddx{\sup} -\frac{1}{\rho} \pddx{p} + fv \\
+  \pddt{v} + u \pddx{v} + v \pddy{v} & = & -g \pddx{\sup} -g \pddx{p} - fu
+\end{eqnarray}
+
+Que son las ecuaciones de aguas poco profundas (\textit{shallow water equations}) con la fuerza de Coriolis y sin considerar viscosidad en el fluído.
+
+Con tadas las aproximaciones, logramos que las componentes horizontales de la velocidad sean independientes de la componente vertical.
+
+%
+%\end{document}
+%%% Local Variables:
+%%% TeX-master: "TesisTotal"
+%%% End:

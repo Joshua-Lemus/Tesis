@@ -1,0 +1,6 @@
+PWD /home/joshy/Tareas/Tesis ultima/Tesis/thesis-ecfm
+INPUT /home/joshy/texlive/2019/texmf.cnf
+INPUT /home/joshy/texlive/2019/texmf-dist/web2c/texmf.cnf
+INPUT /home/joshy/texlive/2019/texmf-var/web2c/pdftex/latex.fmt
+INPUT dedicatoria.tex
+OUTPUT dedicatoria.log

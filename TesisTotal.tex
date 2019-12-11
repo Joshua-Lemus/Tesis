@@ -1,0 +1,157 @@
+%%
+%%	AVISO IMPORTANTE
+%%	Formato optimizado para el sistema operativo GNU/Linux 64 bits
+%%	usar TexLive 2016 (o superior), http://www.ctan.org/tex-archive/systems/texlive/Images/
+%%	usar TeXstudio 2.11, http://texstudio.sourceforge.net/
+\PassOptionsToPackage{english, spanish}{babel} %Before \documentclass because of clash with babel
+\documentclass[letterpaper,12pt]{thesisECFM}
+\usepackage{macros}
+\usepackage[utf8]{inputenc}
+%\usepackage[english, spanish]{babel}
+\usepackage[fixlanguage]{babelbib}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{subfig}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{todo}
+%\usepackage{cleveref}
+%\usepackage{xcite}
+%\usepackage{xr}
+%\externaldocument{Tsunamis}
+
+%% Opciones para los paquetes
+\mathtoolsset{showonlyrefs=true} %true for numbering only referenced equations, false otherwise
+
+%%	NO OLVIDE INCLUIR FUENTE DE LAS TABLAS Y FIGURASotas
+
+% Decomentar para anular recuadros en los hiperenlaces dentro del pdf
+% \hypersetup{pdfborder={0 0 0}}
+
+% Teoremas ---------------------------------------------------------
+% estos ambientes son para teoremas, lemas, corolarios, otros
+% si no los utiliza los puede obviar en su trabajo de graduación
+%\theoremstyle{plain}
+%\newtheorem{thm}{Teorema}[section]
+%\theoremstyle{definition}
+%\newtheorem{exa}{Ejemplo}[chapter]
+%\theoremstyle{remark}
+%\newtheorem{rem}{Nota}[chapter]
+
+% Operadores y funciones -------------------------------------------
+% Los siguientes son ejemplos de comandos definidos por el usuario
+% puede borrarlos, únicamente están para mostrar cómo se construyen con LaTeX
+%\DeclareMathOperator{\Supp}{Supp}       \DeclareMathOperator{\vol}{Vol}%
+\DeclareMathOperator{\surface}{surface}
+\DeclareMathOperator{\bottom}{bottom}
+\DeclareMathOperator{\atm}{atm}
+%\DeclareMathOperator{z_{\bottom}}{b}
+%\newcommand{\Hi}{\mathcal{H}}           \newcommand{\Ba}{\mathcal{B}}%
+%\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+%\newcommand{\union}[4]{\bigcup_{{#2}={#3}}^{#4} #1_{#2}}
+\newcommand{\intver}{\int_{\zbot}^{\sup}}
+\newcommand{\vol}{\Omega} %volume
+\newcommand{\bup}{\eta} %bottom uplift
+\renewcommand{\sup}{\xi} %surface uplift
+\newcommand{\down}{H} %bottom bathymetry
+\newcommand{\zbot}{z_b} %Sea bottom = -H + bup
+%\newcommand{\zbot}{H} %Sea bottom = -H + bup
+%\newcommand{\up}{z_0}
+
+%\newcommand{\ddt}{\frac{d}{dt}}
+\newcommand{\ddt}[1]{\frac{d #1}{dt}}
+\newcommand{\pddt}[1]{\frac{\partial #1}{\partial t}}
+\newcommand{\pddx}[1]{\frac{\partial #1}{\partial x}}
+\newcommand{\pddy}[1]{\frac{\partial #1}{\partial y}}
+\newcommand{\pddz}[1]{\frac{\partial #1}{\partial z}}
+\renewcommand{\div}[1]{\nabla \cdot \left( #1 \right)}
+\renewcommand{\v}[1]{\vec{#1}}
+\renewcommand{\rvert}[1]{\,\raisebox{-.5em}{$\vert_{#1}$}}
+\newcommand{\D}{\Delta}
+\newcommand{\then}{\Rightarrow}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\graphicspath{{../Images/}{/home/joshy/Pictures/}}
+
+% Cuerpo de la tesis -----------------------------------------------
+\usepackage{subfiles} %doc says this should be included last in the preamble, dunno why
+\begin{document}
+
+%% Datos generales del trabajo de graduación
+\datosThesis%
+{1}%						% física 1; matemática 2
+{ En busca de un Mundo Feliz a través de la Geometría Diferencial}%		% Título del trabajo de graduación
+{Fulano de Tal}%			% autor
+{Mengano Pérez}%			% asesor
+{septiembre de 2015}		% mes y año de la orden de impresión
+{2}							% femenino 1; masculino 2
+
+%% Datos generales del examen general privado
+\examenPrivado%
+{M.Sc. Edgar Anibal Cifuentes Anléu}%	% director ECFM
+{Ing. José Rodolfo Samayoa Dardón}%		% secretario académico
+{Perengano}%		% examinador 1
+{Zutano}%		% examinador 2
+{Fulano 2}%		% examinador 3
+
+{\onehalfspacing	% interlineado 1 1/2
+
+\OrdenImpresion{ordenImpresion}		% incluye orden de impresión, guardada en pdf
+
+%\Agrade{agradecimientos}			% Agradecimientos
+
+%\Dedica{dedicatoria}				% Dedicatoria
+
+\par}
+ 
+\frontmatter    % --------------------------------------------------  Hojas preliminares
+
+{\onehalfspacing	% interlineado 1 1/2
+
+\tableofcontents    % Índice general vinculado
+
+%%% \figurasYtablas{ lista_figuras }{ lista_tablas }; con valor 1 se incluye la lista,
+%%% cualquier otro valor no la genera
+%\figurasYtablas{1}{1}
+
+%\include{simbolos}  % Lista de símbolos
+
+%\include{objetivos}      % Resumen y objetivos
+
+%\include{introduccion}      % Introducción
+
+
+
+\mainmatter     % --------------------------------------------------  Cuerpo del Trabajo de Graduación
+%\subfileinclude{Tsunamis}
+%\subfile{Tsunamis}
+\include{Tsunamis} %both \input and \include seem to work. \input is like a copy-paste; \include handles the included file as a separate file (creating an .aux for the file), which is something I want
+%\input{Tsunamis}
+%\include{tch3}      % Cap. 3 
+
+{\backmatter     %	Capítulos no van numerados --------------------------------------------------  Apartados finales
+
+%\include{c_y_r}     % Conclusiones y recomendaciones
+
+  \bibliography{../References/mybib}{} %bibliography
+  \bibliographystyle{bababbrv-fl}
+
+  \todos
+}
+
+% Descomentar en el caso de necesitar incluir apéndices
+%\appendix			% Apéndices
+
+%\include{tch1}
+
+\par}               % termina interlineado 1 1/2
+
+\end{document}
+
+%%% Local Variables:
+%%% TeX-master: t 
+%%% End:

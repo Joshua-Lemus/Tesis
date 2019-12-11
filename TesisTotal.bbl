@@ -1,0 +1,95 @@
+\begin{thebibliography}{1}
+  \providebibliographyfont{name}{}%
+  \providebibliographyfont{lastname}{}%
+  \providebibliographyfont{title}{\emph}%
+  \providebibliographyfont{jtitle}{\btxtitlefont}%
+  \providebibliographyfont{etal}{\emph}%
+  \providebibliographyfont{journal}{}%
+  \providebibliographyfont{volume}{}%
+  \providebibliographyfont{ISBN}{\MakeUppercase}%
+  \providebibliographyfont{ISSN}{\MakeUppercase}%
+  \providebibliographyfont{url}{\url}%
+  \providebibliographyfont{numeral}{}%
+  \expandafter\btxselectlanguage\expandafter {\btxfallbacklanguage}
+
+\btxselectlanguage {spanish}
+\bibitem {PNR}
+Coordinadora Nacional para la Reducción de Desastres,
+  Guatemala\btxauthorcolon\ \btxtitlefont {Plan Nacional de Respuesta},
+  \btxprintmonthyear{.}{3}{2019}{short}.
+\newblock {\latintext
+  \btxurlfont{https://conred.gob.gt/site/Plan-Nacional-de-Respuesta}}, Sección
+  4.7.1.2: ``Responsabilidad ciudadana''.
+
+\btxselectlanguage {english}
+\bibitem {lessonsCHJ}
+\btxnamefont {\btxlastnamefont {{Intergovernmental Oceanographic
+  Commission}}}\btxauthorcolon\ \btxtitlefont {\btxifchangecase {Surviving a
+  tsunami: lessons from chile, hawaii, and japan}{Surviving a tsunami: lessons
+  from Chile, Hawaii, and Japan}}.
+\newblock IOC Brochure 2014-2 Rev., 2014 edition.
+\newblock {\latintext
+  \btxurlfont{https://www.wcdrr.org/wcdrr-data/uploads/857/Surviving%20a%20Tsunami.pdf}}.
+
+\bibitem {tsunamiGlossary}
+\btxnamefont {\btxlastnamefont {{Intergovernmental Oceanographic
+  Commission}}}\btxauthorcolon\ \btxtitlefont {Tsunami Glossary}.
+\newblock United Nations Educational, Scientific and Cultural Organization,
+  \btxeditionnumshort {4}{.}, 2019.
+\newblock (English, French, Spanish, Arabic, Chinese).
+
+\btxselectlanguage {spanish}
+\bibitem {posterCA}
+\btxnamefont {L.~\btxlastnamefont {Kong}} \btxandshort {.}\ \btxnamefont
+  {N.~\btxlastnamefont {Arcos}}\btxauthorcolon\ \btxtitlefont {\btxifchangecase
+  {Tsunamis históricos (desde 1530 hasta el año 2016) caribe, centroamérica,
+  méxico y regiones adyacentes}{Tsunamis Históricos (desde 1530 hasta el año
+  2016) Caribe, Centroamérica, México y Regiones Adyacentes}}.
+\newblock Poster publicado por UNESCO/IOC - NOAA, 2017.
+\newblock {\latintext
+  \btxurlfont{ftp://ftp.ngdc.noaa.gov/hazards/publications/CCAMAR-2017-esp-low-res.pdf}}.
+
+\btxselectlanguage {english}
+\bibitem {Levin2016}
+\btxnamefont {B.\btxfnamespaceshort W. \btxlastnamefont {Levin}} \btxandshort
+  {.}\ \btxnamefont {M.\btxfnamespaceshort A. \btxlastnamefont
+  {Nosov}}\btxauthorcolon\ \btxtitlefont {Physics of Tsunamis}.
+\newblock \btxpublisherfont {Springer International Publishing},
+  \btxeditionnumshort {2}{.}, 2016\ifbtxprintISBN {,
+  \mbox{\btxISBN~\btxISBNfont {9783319240374}}}.
+\newblock {\latintext
+  \btxurlfont{https://link.springer.com/book/10.1007/978-3-319-24037-4}}.
+
+\bibitem {posterGlobal}
+\btxnamefont {\btxlastnamefont {{National Geophysical Data Center / World Data
+  Service}}}\btxauthorcolon\ \btxtitlefont {\btxifchangecase {{NCEI/WDS} global
+  historical tsunami database}{{NCEI/WDS} Global Historical Tsunami Database}}.
+\newblock Maps showing tsunami events and tsunami runups and locations, 2019.
+\newblock {\latintext \btxurlfont{https://doi.org/10.7289/V5PN93H7}}.
+
+\bibitem {OLoughlin_etal2013}
+\btxnamefont {K.\btxfnamespaceshort F. \btxlastnamefont {O'Loughlin}}
+  \btxandshort {.}\ \btxnamefont {J.\btxfnamespaceshort F. \btxlastnamefont
+  {Lander}}\btxauthorcolon\ \btxtitlefont {Caribbean Tsunamis: A 500-Year
+  History from 1498-1998}, \btxvolumeshort {.}~\btxvolumefont {20}
+  \btxofseriesshort {.}\ \btxtitlefont {Advances in Natural and Technological
+  Hazards Research}.
+\newblock \btxpublisherfont {Springer Netherlands}, 2013\ifbtxprintISBN {,
+  \mbox{\btxISBN~\btxISBNfont {978-90-481-6467-7}}}.
+\newblock {\latintext
+  \btxurlfont{https://books.google.com.gt/books?id=gqNfBgAAQBAJ}}.
+
+\bibitem {lessonsIndonesia}
+\btxnamefont {E.~\btxlastnamefont {Yulianto}}, \btxnamefont
+  {F.~\btxlastnamefont {Kusmayanto}}, \btxnamefont {N.~\btxlastnamefont
+  {Supriyatna}}\btxandcomma {} \btxandshort {.}\ \btxnamefont
+  {M.~\btxlastnamefont {Dirhamsyah}}\btxauthorcolon\ \btxtitlefont
+  {\btxifchangecase {Where the first wave arrives in minutes, indonesian
+  lessons on surviving tsunamis near their sources}{Where the first wave
+  arrives in minutes, Indonesian lessons on surviving tsunamis near their
+  sources}}.
+\newblock Published by UNESCO/IOC, IOC Brochure 2010-4, 2010.
+\newblock {\latintext
+  \btxurlfont{http://iotic.ioc-unesco.org/images/xplod/resources/material/tsunami_arrives_in_minutes.pdf}}.
+
+\end{thebibliography}
