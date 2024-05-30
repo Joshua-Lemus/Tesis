@@ -31,8 +31,13 @@ The file WriteGrid.py writes the roadmap grid. You must edit a matrix where you 
 - Where there are beaches
 
 
+#-------------------------------------------------------------------------------------------------------
+# Run the tsunami evacuation
+#-------------------------------------------------------------------------------------------------------
+The main file is "simulacionTesis.nlogo". 
+The rest of ".nlogo" files are for setting the rules for loading our roadmap grid (loadWorld-v2.nlogo), types of agents (multipleAgentsets.nlogo), estimating the optimal path to a meeting point (optimalPath.nlogo), etc. 
 
 #-------------------------------------------------------------------------------------------------------
 # Output
 #-------------------------------------------------------------------------------------------------------
-See 'out.mp4' for an example output
+The output will be a percentage of survivors and a netlogo visual smulation. See 'out.mp4' for an example recording of the visual simulations
