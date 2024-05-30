@@ -14,6 +14,23 @@ After creating the data, you need to cut the data to 3 different regions: a smal
 For this, you can use recortar.py, specifying the latitudes and longitudes for your cuts and the fraction by how much you want to coarse-grain the grid (bigger grids will need to be coarse-grained for computational reasons).
 
 
+#-------------------------------------------------------------------------------------------------------
+# Write a roadmap grid, where the evacuation will take place
+#-------------------------------------------------------------------------------------------------------
+To guide yourself on how the roadmap should look like (to make it as similar as possibl to the actual map), you will need to download some files from https://ideg.segeplan.gob.gt/geoserver/web/wicket/bookmarkable/org.geoserver.web.demo.MapPreviewPage?6 
+Useful datasets are: Caminos,	Bosque y Uso de la Tierra, Cuerpos de Agua
+
+You can also guide yourself through google maps.
+
+The file WriteGrid.py writes the roadmap grid. You must edit a matrix where you specify:
+- Whether the road is paved or not
+- Whether the road is two ways or not
+- The direction of the vehicle flow
+- Where there are bridges (relevant as these can be blocked after an earthquake)
+- Where there is dense or light vegetation
+- Where there are beaches
+
+
 
 #-------------------------------------------------------------------------------------------------------
 # Output
