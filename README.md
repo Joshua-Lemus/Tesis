@@ -1,37 +1,8 @@
-## Welcome to GitHub Pages
+Primero, debes correr grid_data-v2, con datos de gebco
+Luego, correr nuevamente grid_data-v2, pero con datos de dem
 
-You can use the [editor on GitHub](https://github.com/herr-guti/thesis-ecfm/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Luego, definirCosta, recordando cambiar los paths según los que se vayan a usar (los outputs de los pasos anteriores).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Por último, correr interpolar-v2, dando como input todos los outputs anteriores.
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/herr-guti/thesis-ecfm/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Posterior a tener el modelo ya armado, usar recortar.py, para sacar los recortes necesarios.
